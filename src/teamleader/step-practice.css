@@ -1,6 +1,7 @@
 .practice-card,
 .template-card,
-.chain-card {
+.chain-card,
+.flow-board-card {
   margin-bottom: 18px;
   padding: 20px;
   border-radius: 20px;
@@ -12,7 +13,8 @@
 .practice-heading span,
 .hint-panel span,
 .template-card span,
-.chain-card span {
+.chain-card span,
+.flow-board-item span {
   display: block;
   margin-bottom: 8px;
   color: #395bc7;
@@ -33,27 +35,40 @@
   color: #5f6b81;
 }
 
-.guide-grid {
+.guide-grid,
+.flow-board-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 12px;
   margin-bottom: 16px;
 }
 
-.guide-item {
+.flow-board-grid {
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  margin-bottom: 0;
+}
+
+.guide-item,
+.flow-board-item {
   padding: 14px;
   border-radius: 16px;
   background: #f6f8fd;
   border: 1px solid rgba(113, 128, 150, 0.12);
 }
 
-.guide-item strong {
+.flow-board-item {
+  background: #f8fbff;
+}
+
+.guide-item strong,
+.flow-board-item strong {
   display: block;
   margin-bottom: 6px;
   color: #243a78;
 }
 
-.guide-item p {
+.guide-item p,
+.flow-board-item p {
   margin: 0;
   color: #5f6b81;
   font-size: 0.92rem;
