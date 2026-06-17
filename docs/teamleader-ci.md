@@ -27,6 +27,7 @@ package.json
 vite.config.js
 src/**
 scripts/smoke-teamleader-static.mjs
+scripts/smoke-teamleader-ci.mjs
 .github/workflows/teamleader-smoke.yml
 ```
 
@@ -34,9 +35,19 @@ scripts/smoke-teamleader-static.mjs
 
 ```bash
 npm install
-npm run smoke:teamleader:static
+npm run smoke:teamleader:ci
 npm run build
 ```
+
+## Smoke script 구분
+
+```text
+scripts/smoke-teamleader-static.mjs
+scripts/smoke-teamleader-ci.mjs
+```
+
+- `smoke-teamleader-static.mjs`는 로컬/개발용으로 더 넓은 문서·구조 점검을 수행합니다.
+- `smoke-teamleader-ci.mjs`는 GitHub Actions용으로 runtime 핵심 파일과 route, storage namespace, 금지 표현만 안정적으로 점검합니다.
 
 ## Node 버전
 
