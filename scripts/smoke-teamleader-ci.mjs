@@ -31,7 +31,7 @@ const files = {
   steps: read('src/teamleader/teamleaderSteps.js'),
 };
 
-for (const marker of ['journey-teamleader-preview.html', '/src/main.jsx']) {
+for (const marker of ['Team Leader Journey Preview', '/src/main.jsx']) {
   mustInclude(files.html, marker, 'teamleader route html');
 }
 
