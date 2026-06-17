@@ -34,6 +34,29 @@ function PracticeGuide({ practice }) {
   );
 }
 
+function FlowBoard({ practice }) {
+  if (!practice?.flowGroups?.length) return null;
+
+  return (
+    <div className="flow-board-card">
+      <div className="practice-heading">
+        <span>{practice.flowLabel || '실행 흐름 보드'}</span>
+        <h3>{practice.flowTitle}</h3>
+        {practice.flowDescription ? <p>{practice.flowDescription}</p> : null}
+      </div>
+      <div className="flow-board-grid">
+        {practice.flowGroups.map((group) => (
+          <article key={group.title} className="flow-board-item">
+            <span>{group.tag}</span>
+            <strong>{group.title}</strong>
+            <p>{group.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function OutputTemplate({ practice }) {
   if (!practice?.outputTemplate?.length) return null;
 
@@ -85,6 +108,7 @@ export function StepPracticePanel({
       </div>
 
       <PracticeGuide practice={practice} />
+      <FlowBoard practice={practice} />
 
       <label className="input-block">
         <span>{currentStep.inputLabel}</span>
