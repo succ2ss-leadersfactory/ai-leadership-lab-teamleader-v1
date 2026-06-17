@@ -35,7 +35,6 @@ const files = {
 };
 
 for (const marker of [
-  'journey-teamleader-preview.html',
   'Team Leader Journey Preview',
   '/src/main.jsx',
 ]) {
