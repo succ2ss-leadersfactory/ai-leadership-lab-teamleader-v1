@@ -48,7 +48,7 @@ Vite 7 계열과의 호환성을 위해 Node 22를 사용합니다.
 
 ## 주의 사항
 
-현재 저장소에는 `package-lock.json`이 없기 때문에 workflow는 `npm ci`가 아니라 `npm install`을 사용합니다. 향후 lockfile을 추가하면 `npm ci`로 전환할 수 있습니다.
+현재 저장소에는 `package-lock.json`이 없기 때문에 workflow는 `npm ci`가 아니라 `npm install`을 사용합니다. lockfile이 없을 때 npm cache 설정이 실패 요인이 될 수 있어 `actions/setup-node`의 cache 옵션도 사용하지 않습니다. 향후 lockfile을 추가하면 `npm ci`와 npm cache를 함께 적용할 수 있습니다.
 
 ## 확인하는 위험
 
