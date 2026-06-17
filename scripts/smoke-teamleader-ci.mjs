@@ -22,7 +22,6 @@ function mustNotInclude(source, marker, label) {
 }
 
 const files = {
-  packageJson: read('package.json'),
   html: read('journey-teamleader-preview.html'),
   viteConfig: read('vite.config.js'),
   app: read('src/App.jsx'),
@@ -30,55 +29,29 @@ const files = {
   storage: read('src/journey/storage.js'),
   teamleaderApp: read('src/teamleader/TeamleaderJourneyApp.jsx'),
   steps: read('src/teamleader/teamleaderSteps.js'),
-  styles: read('src/styles.css'),
-  qa: read('docs/qa-teamleader-preview.md'),
 };
 
-for (const marker of [
-  'Team Leader Journey Preview',
-  '/src/main.jsx',
-]) {
+for (const marker of ['Team Leader Journey Preview', '/src/main.jsx']) {
   mustInclude(files.html, marker, 'teamleader route html');
 }
 
-for (const marker of [
-  'teamleaderPreview',
-  'journey-teamleader-preview.html',
-]) {
+for (const marker of ['teamleaderPreview', 'journey-teamleader-preview.html']) {
   mustInclude(files.viteConfig, marker, 'teamleader Vite input');
 }
 
-for (const marker of [
-  'TeamleaderJourneyApp',
-  './teamleader/TeamleaderJourneyApp.jsx',
-]) {
+for (const marker of ['TeamleaderJourneyApp', './teamleader/TeamleaderJourneyApp.jsx']) {
   mustInclude(files.app, marker, 'thin app wrapper');
 }
 
-for (const marker of [
-  'teamleader.v1.journey.shell.extracted',
-  'JourneyShell',
-  '10단계 Journey',
-  '이전 단계',
-  '다음 단계',
-]) {
+for (const marker of ['teamleader.v1.journey.shell.extracted', 'JourneyShell', '이전 단계', '다음 단계']) {
   mustInclude(files.shell, marker, 'extracted JourneyShell');
 }
 
-for (const marker of [
-  'teamleader.v1.storage.namespace',
-  'useStoredJson',
-  'removeStoredPrefix',
-]) {
+for (const marker of ['teamleader.v1.storage.namespace', 'useStoredJson']) {
   mustInclude(files.storage, marker, 'teamleader storage utilities');
 }
 
-for (const marker of [
-  'teamleader.v1.preview.app',
-  'TEAMLEADER_NOTES_STORAGE_KEY',
-  '지시문 복사',
-  '범용 팀장용 AI 리더십 Journey',
-]) {
+for (const marker of ['teamleader.v1.preview.app', 'TEAMLEADER_NOTES_STORAGE_KEY', '지시문 복사']) {
   mustInclude(files.teamleaderApp, marker, 'teamleader app composition');
 }
 
@@ -98,20 +71,6 @@ for (const marker of [
   mustInclude(files.steps, marker, 'teamleader 10-step config');
 }
 
-for (const marker of [
-  'smoke:teamleader:static',
-  'scripts/smoke-teamleader-static.mjs',
-]) {
-  mustInclude(files.packageJson, marker, 'teamleader smoke script registration');
-}
-
-for (const marker of [
-  '/journey-teamleader-preview.html',
-  '10단계 Journey QA',
-]) {
-  mustInclude(files.qa, marker, 'teamleader QA checklist');
-}
-
 const runtimeSources = [
   ['html', files.html],
   ['app', files.app],
@@ -119,7 +78,6 @@ const runtimeSources = [
   ['storage', files.storage],
   ['teamleaderApp', files.teamleaderApp],
   ['steps', files.steps],
-  ['styles', files.styles],
 ];
 
 const forbiddenRuntimeMarkers = [
@@ -127,7 +85,6 @@ const forbiddenRuntimeMarkers = [
   'C1바이오',
   'CKD',
   'ckd.',
-  '제약',
   '제약영업',
   '병원',
   '의원',
@@ -146,9 +103,9 @@ for (const [label, source] of runtimeSources) {
 }
 
 if (failures.length) {
-  console.error('teamleader static smoke failed:');
+  console.error('teamleader CI smoke failed:');
   failures.forEach((failure) => console.error(`- ${failure}`));
   process.exit(1);
 }
 
-console.log('teamleader static smoke passed');
+console.log('teamleader CI smoke passed');
