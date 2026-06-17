@@ -120,3 +120,5 @@ npm run preview
 - [Migration Plan](docs/migration-plan.md)
 - [Development Guide](docs/development.md)
 - [Teamleader Preview QA Checklist](docs/qa-teamleader-preview.md)
+- [v41 Source Analysis](docs/v41-source-analysis.md)
+- [v41 to Teamleader Migration Map](docs/v41-to-teamleader-migration-map.md)
