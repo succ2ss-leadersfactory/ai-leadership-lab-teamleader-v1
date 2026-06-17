@@ -1,0 +1,374 @@
+:root {
+  color: #172033;
+  background: #f5f7fb;
+  font-family: Inter, Pretendard, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-synthesis: none;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(57, 103, 214, 0.14), transparent 34rem),
+    linear-gradient(180deg, #f8faff 0%, #eef3fb 100%);
+}
+
+button,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.app-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 40px 0 56px;
+}
+
+.hero-panel,
+.work-panel,
+.step-list,
+.expansion-panel {
+  border: 1px solid rgba(113, 128, 150, 0.18);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 24px 70px rgba(25, 45, 80, 0.08);
+  backdrop-filter: blur(18px);
+}
+
+.hero-panel {
+  padding: 40px;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: #395bc7;
+  font-size: 0.86rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 12px;
+  font-size: clamp(2rem, 5vw, 4.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.06em;
+}
+
+.hero-copy {
+  max-width: 760px;
+  margin-bottom: 24px;
+  color: #526077;
+  font-size: 1.06rem;
+}
+
+.route-card {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 16px;
+  background: #eef3ff;
+  color: #243a78;
+}
+
+.route-card span {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.route-card strong {
+  font-family: 'SFMono-Regular', Consolas, monospace;
+}
+
+.journey-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.step-list {
+  position: sticky;
+  top: 24px;
+  padding: 20px;
+}
+
+.progress-box {
+  margin-bottom: 18px;
+  padding: 18px;
+  border-radius: 20px;
+  background: #172033;
+  color: white;
+}
+
+.progress-box span {
+  display: block;
+  margin-bottom: 4px;
+  color: #b8c5e6;
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.progress-box strong {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.progress-track {
+  overflow: hidden;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: white;
+  transition: width 0.25s ease;
+}
+
+.step-list ol {
+  display: grid;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.step-list button {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  align-items: center;
+  border: 0;
+  border-radius: 14px;
+  padding: 12px;
+  background: transparent;
+  color: #40506a;
+  text-align: left;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.step-list button:hover,
+.step-list button.active {
+  background: #eef3ff;
+  color: #243a78;
+  transform: translateX(2px);
+}
+
+.step-list button span {
+  display: grid;
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 50%;
+  background: #dfe7f7;
+  color: #243a78;
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+.work-panel {
+  padding: 28px;
+}
+
+.step-header {
+  margin-bottom: 22px;
+}
+
+.step-header p {
+  margin-bottom: 6px;
+  color: #395bc7;
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.step-header h2 {
+  margin-bottom: 4px;
+  font-size: clamp(1.9rem, 4vw, 3.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.step-header strong {
+  color: #657189;
+}
+
+.question-card,
+.output-card,
+.prompt-card {
+  margin-bottom: 18px;
+  padding: 20px;
+  border-radius: 20px;
+  background: #f6f8fd;
+  border: 1px solid rgba(113, 128, 150, 0.14);
+}
+
+.question-card span,
+.output-card span,
+.prompt-card span,
+.input-block span {
+  display: block;
+  margin-bottom: 8px;
+  color: #395bc7;
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.question-card p,
+.output-card p {
+  margin-bottom: 0;
+  color: #243048;
+  font-size: 1.08rem;
+  font-weight: 700;
+}
+
+.input-block {
+  display: block;
+  margin-bottom: 18px;
+}
+
+textarea {
+  width: 100%;
+  resize: vertical;
+  border: 1px solid rgba(113, 128, 150, 0.24);
+  border-radius: 20px;
+  padding: 18px;
+  background: white;
+  color: #172033;
+  outline: none;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+textarea:focus {
+  border-color: #516fe1;
+  box-shadow: 0 0 0 4px rgba(81, 111, 225, 0.12);
+}
+
+.prompt-card > div {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.prompt-card button,
+.step-actions button {
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 16px;
+  background: #243a78;
+  color: white;
+  font-weight: 800;
+}
+
+.prompt-card pre {
+  overflow-x: auto;
+  margin: 14px 0 0;
+  padding: 16px;
+  border-radius: 16px;
+  background: #172033;
+  color: #edf3ff;
+  white-space: pre-wrap;
+  font-family: 'SFMono-Regular', Consolas, monospace;
+  font-size: 0.88rem;
+}
+
+.copy-state {
+  margin: 10px 0 0;
+  color: #395bc7;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.step-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.step-actions button:last-child {
+  margin-left: auto;
+}
+
+.expansion-panel {
+  margin-top: 24px;
+  padding: 28px;
+}
+
+.expansion-panel h2 {
+  margin-bottom: 16px;
+  font-size: 1.4rem;
+}
+
+.route-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 10px;
+}
+
+.route-grid code {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: #eef3ff;
+  color: #243a78;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 880px) {
+  .app-shell {
+    width: min(100% - 20px, 1180px);
+    padding: 20px 0 40px;
+  }
+
+  .hero-panel,
+  .work-panel,
+  .step-list,
+  .expansion-panel {
+    border-radius: 22px;
+  }
+
+  .hero-panel,
+  .work-panel,
+  .expansion-panel {
+    padding: 22px;
+  }
+
+  .journey-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .step-list {
+    position: static;
+  }
+}
