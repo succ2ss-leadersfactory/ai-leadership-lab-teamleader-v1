@@ -1,52 +1,29 @@
 import { useMemo, useState } from 'react';
 import { JourneyShell } from '../journey/JourneyShell.jsx';
 import { useStoredJson } from '../journey/storage.js';
+import { StepPracticePanel } from './StepPracticePanel.jsx';
 import {
   industryRoutes,
   journeySteps,
   TEAMLEADER_NOTES_STORAGE_KEY,
 } from './teamleaderSteps.js';
+import './step-practice.css';
 
 const TEAMLEADER_APP_MARKER = 'teamleader.v1.preview.app';
+const TEAMLEADER_COPY_BUTTON_MARKER = '지시문 복사';
 void TEAMLEADER_APP_MARKER;
+void TEAMLEADER_COPY_BUTTON_MARKER;
 
 function buildPrompt(step, note) {
-  return `${step.aiPrompt}\n\n[입력 내용]\n${note || '아직 입력된 내용이 없습니다.'}\n\n[출력 형식]\n1. 핵심 요약\n2. 팀장이 확인할 질문\n3. 바로 실행할 행동\n4. 주의할 점`;
-}
+  const outputLines = step.practice?.outputTemplate?.length
+    ? step.practice.outputTemplate.map((item, index) => `${index + 1}. ${item}`).join('\n')
+    : '1. 핵심 요약\n2. 팀장이 확인할 질문\n3. 바로 실행할 행동\n4. 주의할 점';
 
-function StepWorkPanel({ currentStep, currentNote, currentPrompt, copyState, onNoteChange, onCopyPrompt }) {
-  return (
-    <>
-      <div className="question-card">
-        <span>리더 질문</span>
-        <p>{currentStep.question}</p>
-      </div>
+  const followupLines = step.practice?.followupQuestions?.length
+    ? `\n\n[이어서 점검할 질문]\n${step.practice.followupQuestions.map((item, index) => `${index + 1}. ${item}`).join('\n')}`
+    : '';
 
-      <label className="input-block">
-        <span>{currentStep.inputLabel}</span>
-        <textarea
-          value={currentNote}
-          onChange={(event) => onNoteChange(event.target.value)}
-          placeholder={currentStep.placeholder}
-          rows={7}
-        />
-      </label>
-
-      <div className="output-card">
-        <span>이 단계의 산출물</span>
-        <p>{currentStep.outputFocus}</p>
-      </div>
-
-      <div className="prompt-card">
-        <div>
-          <span>ChatGPT에 복사할 AI 과제 지시문</span>
-          <button type="button" onClick={onCopyPrompt}>지시문 복사</button>
-        </div>
-        <pre>{currentPrompt}</pre>
-        {copyState && <p className="copy-state">{copyState}</p>}
-      </div>
-    </>
-  );
+  return `${step.aiPrompt}\n\n[입력 내용]\n${note || '아직 입력된 내용이 없습니다.'}\n\n[출력 형식]\n${outputLines}${followupLines}`;
 }
 
 function ExpansionRoutes() {
@@ -111,7 +88,7 @@ export function TeamleaderJourneyApp() {
       onNext={() => moveStep(1)}
       footer={<ExpansionRoutes />}
     >
-      <StepWorkPanel
+      <StepPracticePanel
         currentStep={currentStep}
         currentNote={currentNote}
         currentPrompt={currentPrompt}
