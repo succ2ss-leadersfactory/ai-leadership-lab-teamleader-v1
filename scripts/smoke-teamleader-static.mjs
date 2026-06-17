@@ -29,6 +29,8 @@ const files = {
   shell: read('src/journey/JourneyShell.jsx'),
   storage: read('src/journey/storage.js'),
   teamleaderApp: read('src/teamleader/TeamleaderJourneyApp.jsx'),
+  stepPracticePanel: read('src/teamleader/StepPracticePanel.jsx'),
+  stepPracticeStyles: read('src/teamleader/step-practice.css'),
   steps: read('src/teamleader/teamleaderSteps.js'),
   styles: read('src/styles.css'),
   qa: read('docs/qa-teamleader-preview.md'),
@@ -76,10 +78,19 @@ for (const marker of [
 for (const marker of [
   'teamleader.v1.preview.app',
   'TEAMLEADER_NOTES_STORAGE_KEY',
+  'StepPracticePanel',
   '지시문 복사',
   '범용 팀장용 AI 리더십 Journey',
 ]) {
   mustInclude(files.teamleaderApp, marker, 'teamleader app composition');
+}
+
+for (const marker of [
+  'PracticeGuide',
+  '추천 정리 형식',
+  'AI와 이어서 던질 질문',
+]) {
+  mustInclude(files.stepPracticePanel, marker, 'step practice panel');
 }
 
 for (const marker of [
@@ -107,7 +118,7 @@ for (const marker of [
 
 for (const marker of [
   '/journey-teamleader-preview.html',
-  '10단계 Journey QA',
+  'Step 1~3 고도화 QA',
 ]) {
   mustInclude(files.qa, marker, 'teamleader QA checklist');
 }
@@ -118,6 +129,8 @@ const runtimeSources = [
   ['shell', files.shell],
   ['storage', files.storage],
   ['teamleaderApp', files.teamleaderApp],
+  ['stepPracticePanel', files.stepPracticePanel],
+  ['stepPracticeStyles', files.stepPracticeStyles],
   ['steps', files.steps],
   ['styles', files.styles],
 ];
