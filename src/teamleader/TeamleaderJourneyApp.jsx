@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { JourneyShell } from '../journey/JourneyShell.jsx';
 import { useStoredJson } from '../journey/storage.js';
+import { oneToOnePracticeByStepId } from './oneToOnePractice.js';
 import { StepPracticePanel } from './StepPracticePanel.jsx';
 import {
   industryRoutes,
@@ -26,6 +27,11 @@ function buildPrompt(step, note) {
   return `${step.aiPrompt}\n\n[입력 내용]\n${note || '아직 입력된 내용이 없습니다.'}\n\n[출력 형식]\n${outputLines}${followupLines}`;
 }
 
+function withExternalPractice(step) {
+  const externalPractice = oneToOnePracticeByStepId[step.id];
+  return externalPractice ? { ...step, practice: externalPractice } : step;
+}
+
 function ExpansionRoutes() {
   return (
     <section className="expansion-panel">
@@ -44,7 +50,7 @@ export function TeamleaderJourneyApp() {
   const [notes, setNotes] = useStoredJson(TEAMLEADER_NOTES_STORAGE_KEY, {});
   const [copyState, setCopyState] = useState('');
 
-  const currentStep = journeySteps[currentIndex];
+  const currentStep = withExternalPractice(journeySteps[currentIndex]);
   const currentNote = notes[currentStep.id] || '';
   const progress = useMemo(
     () => Math.round(((currentIndex + 1) / journeySteps.length) * 100),
