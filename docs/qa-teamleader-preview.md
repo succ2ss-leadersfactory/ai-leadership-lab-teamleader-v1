@@ -29,6 +29,7 @@
 - [ ] 단계 이동 후 입력값이 유지된다.
 - [ ] 브라우저 새로고침 후 localStorage 기반 입력값이 유지된다.
 - [ ] 입력값이 없는 경우에도 AI 과제 지시문이 깨지지 않는다.
+- [ ] storage key가 `teamleader.v1.` namespace를 사용한다.
 
 ## 4. AI 과제 지시문 QA
 
@@ -60,19 +61,35 @@ MR
 
 ## 6. 산업별 확장 준비 QA
 
-- [ ] `src/data/teamleaderJourney.js`에서 10단계 데이터가 한 곳에 모여 있다.
+- [ ] `src/teamleader/teamleaderSteps.js`에서 10단계 데이터가 한 곳에 모여 있다.
 - [ ] route 후보가 한 곳에서 관리된다.
 - [ ] 향후 산업별 config 분리가 가능한 구조다.
 - [ ] 화면 문구와 데이터가 과도하게 컴포넌트 내부에 하드코딩되어 있지 않다.
+- [ ] `src/journey/JourneyShell.jsx`와 `src/teamleader/TeamleaderJourneyApp.jsx`의 책임이 분리되어 있다.
 
-## 7. 빌드 QA
+## 7. 정적 Smoke QA
+
+```bash
+npm run smoke:teamleader:static
+```
+
+- [ ] route HTML이 존재한다.
+- [ ] Vite input에 `/journey-teamleader-preview.html`이 등록되어 있다.
+- [ ] `App.jsx`가 thin wrapper로 유지된다.
+- [ ] `JourneyShell`이 분리되어 있다.
+- [ ] storage utility가 `teamleader.v1.` namespace를 사용한다.
+- [ ] runtime 파일에 금지 표현이 없다.
+
+## 8. 빌드 QA
 
 ```bash
 npm install
+npm run smoke:teamleader:static
 npm run build
 npm run preview
 ```
 
+- [ ] smoke check가 성공한다.
 - [ ] build가 성공한다.
 - [ ] preview 서버에서 `/journey-teamleader-preview.html`이 정상 작동한다.
 - [ ] 콘솔에 치명적인 오류가 없다.
