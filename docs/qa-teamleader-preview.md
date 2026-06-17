@@ -33,7 +33,16 @@
 - [ ] Step 3에서 질문 품질을 높이는 후속 질문이 보인다.
 - [ ] Step 1~3의 AI 과제 지시문에 추천 정리 형식이 반영된다.
 
-## 4. 입력/저장 QA
+## 4. Step 7~8 실행 Flow QA
+
+- [ ] Step 7에 업무 우선순위 보드가 표시된다.
+- [ ] Step 7에서 먼저 할 일, 잠시 줄일 일, 맡길 일, 멈출 일이 구분된다.
+- [ ] Step 7의 AI 과제 지시문이 2주 실행 흐름까지 만들도록 안내한다.
+- [ ] Step 8에 병목 대응 보드가 표시된다.
+- [ ] Step 8에서 팀장 개입, 팀 내 위임, 협업 조율, 기준화가 구분된다.
+- [ ] Step 8의 AI 과제 지시문이 역할 경계와 개입 기준을 나누어 제안한다.
+
+## 5. 입력/저장 QA
 
 - [ ] 각 단계 textarea에 입력할 수 있다.
 - [ ] 단계 이동 후 입력값이 유지된다.
@@ -41,14 +50,14 @@
 - [ ] 입력값이 없는 경우에도 AI 과제 지시문이 깨지지 않는다.
 - [ ] storage key가 `teamleader.v1.` namespace를 사용한다.
 
-## 5. AI 과제 지시문 QA
+## 6. AI 과제 지시문 QA
 
 - [ ] 각 단계별 지시문이 단계 목적과 맞다.
 - [ ] `지시문 복사` 버튼이 동작한다.
 - [ ] 복사 실패 시 사용자 안내 문구가 표시된다.
 - [ ] 지시문에 제약영업 특화 표현이 남아 있지 않다.
 
-## 6. 범용 표현 QA
+## 7. 범용 표현 QA
 
 다음 표현이 사용자 화면에 노출되지 않는지 검색합니다.
 
@@ -69,16 +78,16 @@ MR
 
 주의: `영업`이라는 단어는 향후 금융/보험 영업 route에서 사용할 수 있으나, 1차 범용 팀장용 preview에서는 특정 산업 맥락으로 보이지 않도록 관리합니다.
 
-## 7. 산업별 확장 준비 QA
+## 8. 산업별 확장 준비 QA
 
 - [ ] `src/teamleader/teamleaderSteps.js`에서 10단계 데이터가 한 곳에 모여 있다.
 - [ ] route 후보가 한 곳에서 관리된다.
 - [ ] 향후 산업별 config 분리가 가능한 구조다.
 - [ ] 화면 문구와 데이터가 과도하게 컴포넌트 내부에 하드코딩되어 있지 않다.
 - [ ] `src/journey/JourneyShell.jsx`와 `src/teamleader/TeamleaderJourneyApp.jsx`의 책임이 분리되어 있다.
-- [ ] `src/teamleader/StepPracticePanel.jsx`가 Step 1~3 실습 UI를 담당한다.
+- [ ] `src/teamleader/StepPracticePanel.jsx`가 Step 1~3 실습 UI와 Step 7~8 실행 Flow UI를 함께 담당한다.
 
-## 8. 정적 Smoke QA
+## 9. 정적 Smoke QA
 
 ```bash
 npm run smoke:teamleader:static
@@ -92,7 +101,7 @@ npm run smoke:teamleader:ci
 - [ ] storage utility가 `teamleader.v1.` namespace를 사용한다.
 - [ ] Step practice runtime 파일에 금지 표현이 없다.
 
-## 9. 빌드 QA
+## 10. 빌드 QA
 
 ```bash
 npm install
