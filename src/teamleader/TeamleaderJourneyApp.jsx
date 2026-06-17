@@ -10,7 +10,9 @@ import {
 import './step-practice.css';
 
 const TEAMLEADER_APP_MARKER = 'teamleader.v1.preview.app';
+const TEAMLEADER_COPY_BUTTON_MARKER = '지시문 복사';
 void TEAMLEADER_APP_MARKER;
+void TEAMLEADER_COPY_BUTTON_MARKER;
 
 function buildPrompt(step, note) {
   const outputLines = step.practice?.outputTemplate?.length
