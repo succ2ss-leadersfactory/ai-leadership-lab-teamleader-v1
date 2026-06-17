@@ -1,3 +1,6 @@
+export const TEAMLEADER_STORAGE_PREFIX = 'teamleader.v1.';
+export const TEAMLEADER_NOTES_STORAGE_KEY = `${TEAMLEADER_STORAGE_PREFIX}notes`;
+
 export const journeySteps = [
   {
     id: 1,
@@ -15,7 +18,7 @@ export const journeySteps = [
     subtitle: '팀의 책임, 구성, 이해관계자를 파악합니다.',
     question: '우리 팀은 누구에게 어떤 가치를 만들어야 하나요?',
     inputLabel: '팀 역할, 주요 구성원, 협업 상대',
-    placeholder: '예: 우리 팀은 신규 서비스 운영 안정화를 맡고 있으며, 개발팀·고객지원팀·영업지원팀과 자주 협업합니다.',
+    placeholder: '예: 우리 팀은 신규 서비스 운영 안정화를 맡고 있으며, 개발팀·고객지원팀·지원부서와 자주 협업합니다.',
     outputFocus: '팀의 존재 이유와 핵심 역할을 명확하게 만듭니다.',
     aiPrompt: '아래 내용을 바탕으로 우리 팀의 핵심 역할, 주요 이해관계자, 팀장이 확인해야 할 역할 경계를 표로 정리해 주세요.',
   },
@@ -65,7 +68,7 @@ export const journeySteps = [
     subtitle: '집중할 일과 덜어낼 일을 구분합니다.',
     question: '성과를 위해 더 해야 할 일과 잠시 줄여야 할 일은 무엇인가요?',
     inputLabel: '해야 할 일, 줄일 일, 멈출 일, 위임할 일',
-    placeholder: '예: 고객 이슈 원인 기록은 강화하고, 목적 없는 반복 회의와 중복 보고는 줄이고 싶습니다.',
+    placeholder: '예: 이슈 원인 기록은 강화하고, 목적 없는 반복 회의와 중복 보고는 줄이고 싶습니다.',
     outputFocus: '팀의 실행 집중도를 높이는 할 일·줄일 일 목록을 만듭니다.',
     aiPrompt: '아래 내용을 바탕으로 팀장이 먼저 할 일 3개, 잠시 줄일 일 3개, 위임할 일 2개를 구분하고 2주 실행 흐름으로 정리해 주세요.',
   },
