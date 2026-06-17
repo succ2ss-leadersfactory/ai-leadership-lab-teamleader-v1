@@ -30,6 +30,7 @@ const files = {
   teamleaderApp: read('src/teamleader/TeamleaderJourneyApp.jsx'),
   stepPracticePanel: read('src/teamleader/StepPracticePanel.jsx'),
   stepPracticeStyles: read('src/teamleader/step-practice.css'),
+  oneToOnePractice: read('src/teamleader/oneToOnePractice.js'),
   steps: read('src/teamleader/teamleaderSteps.js'),
 };
 
@@ -53,12 +54,16 @@ for (const marker of ['teamleader.v1.storage.namespace', 'useStoredJson']) {
   mustInclude(files.storage, marker, 'teamleader storage utilities');
 }
 
-for (const marker of ['teamleader.v1.preview.app', 'TEAMLEADER_NOTES_STORAGE_KEY', 'StepPracticePanel', '지시문 복사']) {
+for (const marker of ['teamleader.v1.preview.app', 'TEAMLEADER_NOTES_STORAGE_KEY', 'StepPracticePanel', 'oneToOnePracticeByStepId', '지시문 복사']) {
   mustInclude(files.teamleaderApp, marker, 'teamleader app composition');
 }
 
 for (const marker of ['PracticeGuide', '추천 정리 형식', 'AI와 이어서 던질 질문']) {
   mustInclude(files.stepPracticePanel, marker, 'step practice panel');
+}
+
+for (const marker of ['Step 9 Practice', 'Step 10 Practice', '1on1 대상 선택 보드', '1on1 대화 실천 보드']) {
+  mustInclude(files.oneToOnePractice, marker, 'one-to-one practice config');
 }
 
 for (const marker of [
@@ -85,6 +90,7 @@ const runtimeSources = [
   ['teamleaderApp', files.teamleaderApp],
   ['stepPracticePanel', files.stepPracticePanel],
   ['stepPracticeStyles', files.stepPracticeStyles],
+  ['oneToOnePractice', files.oneToOnePractice],
   ['steps', files.steps],
 ];
 
