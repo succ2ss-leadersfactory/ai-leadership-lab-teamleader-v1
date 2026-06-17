@@ -1,0 +1,58 @@
+name: Teamleader Smoke
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'journey-teamleader-preview.html'
+      - 'index.html'
+      - 'package.json'
+      - 'vite.config.js'
+      - 'src/**'
+      - 'scripts/smoke-teamleader-static.mjs'
+      - '.github/workflows/teamleader-smoke.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'journey-teamleader-preview.html'
+      - 'index.html'
+      - 'package.json'
+      - 'vite.config.js'
+      - 'src/**'
+      - 'scripts/smoke-teamleader-static.mjs'
+      - '.github/workflows/teamleader-smoke.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: teamleader-smoke-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  smoke-and-build:
+    name: Static smoke and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Teamleader static smoke
+        run: npm run smoke:teamleader:static
+
+      - name: Build Teamleader preview app
+        run: npm run build
