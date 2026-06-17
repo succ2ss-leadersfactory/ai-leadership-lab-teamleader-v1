@@ -7,6 +7,7 @@ import {
   journeySteps,
   TEAMLEADER_NOTES_STORAGE_KEY,
 } from './teamleaderSteps.js';
+import './step-practice.css';
 
 const TEAMLEADER_APP_MARKER = 'teamleader.v1.preview.app';
 void TEAMLEADER_APP_MARKER;
