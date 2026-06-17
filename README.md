@@ -4,6 +4,33 @@
 
 이 저장소는 기존 `succ2ss-leadersfactory/ckd-ci-bio-decision-v1`의 안정화된 v41 구조를 직접 수정하지 않고, 별도 프로젝트로 분리해 범용 팀장용 버전을 개발하기 위한 저장소입니다.
 
+## 현재 preview route
+
+```text
+/journey-teamleader-preview.html
+```
+
+## 로컬 실행
+
+```bash
+npm install
+npm run dev
+```
+
+확인 경로:
+
+```text
+http://localhost:5173/
+http://localhost:5173/journey-teamleader-preview.html
+```
+
+빌드 확인:
+
+```bash
+npm run build
+npm run preview
+```
+
 ## 프로젝트 목적
 
 - 기존 `종근당/C1바이오 제약영업팀장 AI 리더십 Lab Journey v41`의 10단계 Journey 학습 흐름을 보존한다.
@@ -91,3 +118,5 @@
 
 - [Product Direction](docs/product-direction.md)
 - [Migration Plan](docs/migration-plan.md)
+- [Development Guide](docs/development.md)
+- [Teamleader Preview QA Checklist](docs/qa-teamleader-preview.md)
